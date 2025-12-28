@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Local Storage Example</title>
+    <title>User Information</title>
     <style>
         body {
             background: #1f1f2e;
@@ -14,70 +14,58 @@
             color: white;
         }
 
-        .box {
+        .card {
             background: #2b2b3d;
             padding: 25px;
             width: 350px;
-            border-radius: 10px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         input {
             width: 100%;
             padding: 10px;
-            margin-top: 8px;
-            border-radius: 5px;
+            margin-bottom: 10px;
+            border-radius: 6px;
             border: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            background: #5b5bff;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: #4848e0;
         }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h2>User Info</h2>
+<div class="card">
+    <h2>User Information</h2>
 
-    <input id="name" placeholder="Name">
-    <input id="id" placeholder="ID">
-    <input id="phone" placeholder="Phone">
-    <input id="email" placeholder="Email">
-    <input id="address" placeholder="Address">
-
-    <button onclick="saveData()">Save</button>
-    <button onclick="loadData()">Load</button>
+    <input id="name" readonly>
+    <input id="id" readonly>
+    <input id="phone" readonly>
+    <input id="email" readonly>
+    <input id="address" readonly>
 </div>
 
 <script>
-    function saveData() {
-        localStorage.setItem("name", document.getElementById("name").value);
-        localStorage.setItem("id", document.getElementById("id").value);
-        localStorage.setItem("phone", document.getElementById("phone").value);
-        localStorage.setItem("email", document.getElementById("email").value);
-        localStorage.setItem("address", document.getElementById("address").value);
+    // STATIC DATA (edit this anytime)
+    const userData = {
+        name: "omar ahmed",
+        id: "MG25056",
+        phone: "01011771227",
+        email: "ohanafy61@gmail.com",
+        address: "new cairo, Egypt"
+    };
 
-        alert("Saved to Local Storage!");
-    }
-
-    function loadData() {
-        document.getElementById("name").value = localStorage.getItem("name") || "";
-        document.getElementById("id").value = localStorage.getItem("id") || "";
-        document.getElementById("phone").value = localStorage.getItem("phone") || "";
-        document.getElementById("email").value = localStorage.getItem("email") || "";
-        document.getElementById("address").value = localStorage.getItem("address") || "";
-    }
+    // Load data when page opens
+    window.onload = function () {
+        document.getElementById("name").value = userData.name;
+        document.getElementById("id").value = userData.id;
+        document.getElementById("phone").value = userData.phone;
+        document.getElementById("email").value = userData.email;
+        document.getElementById("address").value = userData.address;
+    };
 </script>
 
 </body>
