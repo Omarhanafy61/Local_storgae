@@ -2,73 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Information</title>
+    <title>Save to Local Storage</title>
     <style>
         body {
-            background: #1f1f2e;
             font-family: Arial, sans-serif;
+            background: #1e1e2f;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: white;
         }
 
-        .card {
-            background: #2b2b3d;
+        .box {
+            background: #2c2c3f;
             padding: 25px;
-            width: 350px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            width: 320px;
         }
 
         input {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            border-radius: 6px;
             border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
 
-<div class="card">
-    <h2>User Information</h2>
+<div class="box">
+    <h3>Enter User Data</h3>
 
-    <input id="name" readonly>
-    <input id="id" readonly>
-    <input id="phone" readonly>
-    <input id="email" readonly>
-    <input id="address" readonly>
+    <input id="name" placeholder="Name">
+    <input id="id" placeholder="ID">
+    <input id="phone" placeholder="Phone">
+    <input id="email" placeholder="Email">
+    <input id="address" placeholder="Address">
+
+    <button onclick="saveData()">Save</button>
 </div>
 
 <script>
-    // STATIC DATA (edit this anytime)
-    const userData = {
-        name: "omar ahmed",
-        id: "MG25056",
-        phone: "01011771227",
-        email: "ohanafy61@gmail.com",
-        address: "new cairo, Egypt"
-    };
+    function saveData() {
+        localStorage.setItem("name", document.getElementById("name").value);
+        localStorage.setItem("id", document.getElementById("id").value);
+        localStorage.setItem("phone", document.getElementById("phone").value);
+        localStorage.setItem("email", document.getElementById("email").value);
+        localStorage.setItem("address", document.getElementById("address").value);
 
-    // Load data when page opens
-    window.onload = function () {
-        document.getElementById("name").value = userData.name;
-        document.getElementById("id").value = userData.id;
-        document.getElementById("phone").value = userData.phone;
-        document.getElementById("email").value = userData.email;
-        document.getElementById("address").value = userData.address;
-    };
+        alert("Data saved! Check Application → Local Storage");
+    }
 </script>
 
 </body>
 </html>
+
+
 
 
